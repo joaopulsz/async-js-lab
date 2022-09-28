@@ -1,3 +1,4 @@
+const population = document.getElementById('population')
 const countriesSection = document.getElementById('countries');
 const list = document.createElement('ul');
 countriesSection.appendChild(list);
@@ -16,7 +17,11 @@ const getCountries = async () => {
         const listItem = document.createElement('li');
         listItem.textContent = item;
         list.appendChild(listItem);
-    })
+    });
+
+    const populations = countries.map(country => country.population);
+    const totalPopulation = populations.reduce((total, population) => total + population, 0);
+    population.textContent = `The sum of every country's population is: ${totalPopulation}.`
 }
 
 getCountries()
